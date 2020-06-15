@@ -1,0 +1,24 @@
+
+
+# http://info.mcip.ro/?cap=Greedy&prob=592
+
+def main():
+    bani = 445
+    baza = 2
+    putere =5
+    k=0
+    #lista cu bancnote
+    lista_bancnote = [2**x for x in range(0,5+1)]
+    #counter bancnote
+    
+    for i in reversed(lista_bancnote):
+        counter_partial =0
+        while(bani>i):
+            counter_partial+=1
+            bani-=i
+            k+=1
+        if(counter_partial):
+            print(f"{counter_partial} bancnote de valoare {i}")
+    print(f"{k}")
+if __name__ == "__main__":
+    main()
