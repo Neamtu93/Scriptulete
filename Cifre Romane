@@ -1,0 +1,21 @@
+
+#https://www.pbinfo.ro/probleme/3144/cifre-romane
+
+def main():
+    ceva = {1:"I",2:"II",3:"III",4:"IV",5:"V",9:"IX",10:"X",40:"XL",50:"L",90:"XC",100:"C",400:"CD",500:"D",900:"CM",10000:"M"}
+    with open("cifre_romane.in","r") as f:
+        n=int(f.readline())
+    with open("cifre_romane.out","w") as f:
+    while(n):
+        if(n<=9):
+            f.write(str(ceva[i]))
+            break
+        else:
+            for i in reversed(ceva):
+                while(i<n):
+                    n-=i
+                    f.write(str(ceva[i]))
+    
+
+if __name__ == "__main__":
+	main()
