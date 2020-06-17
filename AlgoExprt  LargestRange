@@ -1,25 +1,28 @@
 
 #https://www.algoexpert.io/questions/Largest%20Range
+
+
 def argestRange(array):
     hash_tab = {x:0 for x in array}
     left = right = 0
 
     for x in array:
-        left_count = 1
-        right_count = 1
-        while(left_count in hash_tab):
-            hash_tab[left_count]=1
-            left_count-=1
-        left_count+=1 // no more while
+        if(hash_tab[x]==0):
+            left_count = x-1
+            right_count = x+1
+            while(left_count in hash_tab):
+                hash_tab[left_count]=1
+                left_count-=1
+            left_count+=1
 
-        while(right_count in hash_tab):
-            hash_tab[right_count] = 1
-            right_count +=1
-        right_count -=1 / no more while
+            while(right_count in hash_tab):
+                hash_tab[right_count] = 1
+                right_count +=1
+            right_count -=1
 
-        if(right-left) <= (right_count-left_count):
-            right = right_count
-            left = left_count
+            if(right-left) <= (right_count-left_count):
+                right = right_count
+                left = left_count
 
 
     return [left, right]
